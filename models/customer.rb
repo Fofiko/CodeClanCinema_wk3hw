@@ -40,8 +40,6 @@ class Customer
     return result
   end
 
-
-
   def self.all()
     sql = "SELECT * FROM customers"
     customer_data = SqlRunner.run(sql)
