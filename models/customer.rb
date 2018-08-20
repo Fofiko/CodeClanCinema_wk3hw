@@ -40,12 +40,27 @@ class Customer
     return result
   end
 
-
+# Buying tickets should decrease the funds of the customer by the price
   def buy_ticket(film)
      @funds -= film.price
+     update
   end
 
+  def number_of_tickets_bought()
+    return films().count
+  end
 
+# Check how many tickets were bought by a customer
+  def count_tickets()
+    sql = "SELECT tickets.* FROM tickets
+          INNER JOIN customers
+          ON tickets.customer_id = customers.id
+          WHERE customer_id = $1"
+    values = [@id]
+    tickets = SqlRunner.run(sql, values)
+    number_of_tickets = tickets.count
+    return number_of_tickets
+   end
 
   def self.all()
     sql = "SELECT * FROM customers"

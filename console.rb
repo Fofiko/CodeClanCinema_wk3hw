@@ -11,12 +11,12 @@ Ticket.delete_all()
 
 customer1 = Customer.new({
   'name' => 'Anthony',
-  'funds' => '20'
+  'funds' => '100'
   })
 
 customer2 = Customer.new({
   'name' => 'Brooks',
-  'funds' => '30'
+  'funds' => '50'
   })
 
 customer3 = Customer.new({
@@ -63,9 +63,15 @@ ticket3 = Ticket.new({
   'film_id' => film3.id
   })
 
+ticket4 = Ticket.new({
+  'customer_id' => customer1.id,
+  'film_id' => film2.id
+  })
+
 ticket1.save()
 ticket2.save()
 ticket3.save()
+ticket4.save()
 
 
 binding.pry
