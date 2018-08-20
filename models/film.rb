@@ -40,6 +40,25 @@ class Film
     return result
   end
 
+  # Check how many customers are going to watch a certain film
+    def count_customers_for_film()
+      sql = "SELECT tickets.* FROM tickets
+            INNER JOIN films
+            ON tickets.film_id = films.id
+            WHERE films.id = $1"
+      values = [@id]
+      tickets = SqlRunner.run(sql, values)
+      number_of_tickets = tickets.count
+      return number_of_tickets
+     end
+
+
+
+
+
+
+
+
 
   def self.all()
     sql = "SELECT * FROM films"

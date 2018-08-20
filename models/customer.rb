@@ -55,7 +55,7 @@ class Customer
     sql = "SELECT tickets.* FROM tickets
           INNER JOIN customers
           ON tickets.customer_id = customers.id
-          WHERE customer_id = $1"
+          WHERE customers.id = $1"
     values = [@id]
     tickets = SqlRunner.run(sql, values)
     number_of_tickets = tickets.count
