@@ -46,9 +46,6 @@ class Customer
      update
   end
 
-  def number_of_tickets_bought()
-    return films().count
-  end
 
 # Check how many tickets were bought by a customer
   def count_tickets()
