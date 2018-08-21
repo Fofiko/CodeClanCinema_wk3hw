@@ -8,18 +8,19 @@ class Screening
     @id = info['id'].to_i if info['id']
     @time = info['time']
     @capacity = info['capacity']
+    @film_id = info['film_id']
   end
 
   def save()
-    sql = "INSERT INTO screenings (time, capacity) VALUES ($1, $2) RETURNING id"
-    values = [@time, @capacity]
+    sql = "INSERT INTO screenings (time, capacity, film_id) VALUES ($1, $2) RETURNING id"
+    values = [@time, @capacity, @film_id]
     screening = SqlRunner.run(sql, values).first
     @id = screening['id'].to_i
   end
 
   def update()
-    sql = "UPDATE screenings SET (time, capacity) = ($1, $2) WHERE id = $3"
-    values = [@time, @capacity, @id]
+    sql = "UPDATE screenings SET (time, capacity, film_id) = ($1, $2) WHERE id = $3"
+    values = [@time, @capacity, @film_id, @id]
     SqlRunner.run(sql, values)
   end
 
