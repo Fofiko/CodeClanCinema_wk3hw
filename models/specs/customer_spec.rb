@@ -31,7 +31,11 @@ class CustomerTest < Minitest::Test
   end
 
 
-
+  def test_bought_tickets()
+    @customer1.buy_ticket(@film1)
+    @customer1.buy_ticket(@film2)
+    assert_equal(2, @customer1.count_tickets)
+  end
 
 
 
